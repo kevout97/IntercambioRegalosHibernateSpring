@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Cambios de un intercambio
     @RequestMapping("/altaIntercambio")
     public ModelAndView altaIntercambio(Intercambio intercambio){
-        ModelAndView model = new ModelAndView("paginaInicio");
+        ModelAndView model = new ModelAndView("listaIntercambios");
         setIntercambio(intercambio);
         model.addObject(intercambio);
         return model;
@@ -20,7 +20,7 @@ public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Camb
     
     @RequestMapping("/bajaIntercambio")
     public ModelAndView bajaIntercambio(Intercambio intercambio){
-        ModelAndView model = new ModelAndView("paginaInicio");
+        ModelAndView model = new ModelAndView("listaIntercambios");
         deleteIntercambio(intercambio);
         model.addObject(intercambio);
         return model;
@@ -28,7 +28,7 @@ public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Camb
     
     @RequestMapping("/cambioIntercambio")
     public ModelAndView cambioIntercambio(Intercambio intercambio){
-        ModelAndView model = new ModelAndView("paginaInicio");
+        ModelAndView model = new ModelAndView("listaIntercambios");
         setIntercambio(intercambio);
         model.addObject(intercambio);
         return model;
