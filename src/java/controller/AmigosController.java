@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Iterator;
 import java.util.List;
+import model.Amigos;
 import model.AmigosId;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,8 +11,8 @@ import org.hibernate.Session;
  *
  * @author kevout
  */
-public class AmigosIdController {
-    public void setAmigosId(AmigosId amigos){
+public class AmigosController {
+    public void setAmigos(Amigos amigos){
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -23,26 +24,26 @@ public class AmigosIdController {
         
     }
     
-    public AmigosId getAmigosId(String correoUsuario){
-        AmigosId amigosId = new AmigosId();
+    public Amigos getAmigos(AmigosId amigosId){
+        Amigos amigos = new Amigos();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            amigosId = (AmigosId) session.get(AmigosId.class, correoUsuario);
+            amigos = (Amigos) (session.get(Amigos.class,amigosId));
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
         }
-        return amigosId;
+        return amigos;
         
     }
     
-    public List getAllAmigosId(){
+    public List getAllAmigos(){
         List result = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            result = session.createQuery("from AmigosId").list();
+            result = session.createQuery("from Amigos").list();
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -50,7 +51,7 @@ public class AmigosIdController {
         return result;
     }
     
-    public void deleteAmigosId(AmigosId amigos){
+    public void deleteAmigos(Amigos amigos){
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -61,11 +62,11 @@ public class AmigosIdController {
         }
     }
     
-    public void deleteAllAmigosId(){
+    public void deleteAllAmigos(){
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            List amigosId = getAllAmigosId();
+            List amigosId = getAllAmigos();
             for (Iterator it = amigosId.iterator(); it.hasNext();) {
                 AmigosId amigo =(AmigosId)it.next();
                 session.delete(amigo);
@@ -74,5 +75,18 @@ public class AmigosIdController {
             session.close();
         } catch (HibernateException e) {
         }
+    }
+    
+    public boolean existsAmigos(Amigos amigos){
+        boolean flag = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            flag = !(session.createQuery("from Usuario where correo_usuario ='"+amigos.getId().getCorreoUsuario()+"' and correo_amigo = '"+amigos.getId().getCorreoAmigo()+"'").list().isEmpty());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return flag;
     }
 }
