@@ -50,6 +50,32 @@ public class UsuarioIntercambioController {
         return result;
     }
     
+    public List getAllUsuarioIntercambioByEmail(String correo){
+        List result = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            result = session.createQuery("from UsuarioIntercambio where id_usuario = '"+correo+"'").list();
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return result;
+    }
+    
+    public List getAllUsuarioIntercambioByIdIntercambio(int id_intercambio){
+        List result = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            result = session.createQuery("from UsuarioIntercambio where id_intercambio = "+id_intercambio).list();
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return result;
+    }
+    
     public void deleteUsuarioItercambio(UsuarioIntercambio usuarioIntercambio){
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
