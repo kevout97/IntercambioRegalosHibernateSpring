@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/11/2018 08:20:17 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Intercambio" table="intercambio" catalog="convivio" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tema" class="model.Tema" fetch="select">
+            <column name="id_tema" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="montoMaximo" type="big_decimal">
+            <column name="monto_maximo" precision="6" />
+        </property>
+        <property name="fechaLimite" type="date">
+            <column name="fecha_limite" length="10" />
+        </property>
+        <property name="fechaIntercambio" type="date">
+            <column name="fecha_intercambio" length="10" />
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="150" />
+        </property>
+        <set name="usuarioIntercambios" table="usuario_intercambio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_intercambio" />
+            </key>
+            <one-to-many class="model.UsuarioIntercambio" />
+        </set>
+    </class>
+</hibernate-mapping>
