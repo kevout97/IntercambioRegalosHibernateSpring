@@ -3,6 +3,7 @@ package controller;
 import java.util.Iterator;
 import java.util.List;
 import model.Intercambio;
+import model.Usuario;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -75,4 +76,31 @@ public class IntercambioController {
         } catch (HibernateException e) {
         }
     }
+    
+    public boolean existsIntercambio(Intercambio intercambio){
+        boolean flag = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            flag = !(session.createQuery("from Intercambio where id ="+intercambio.getId()).list().isEmpty());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return flag;
+    }
+    
+    public boolean existsIntercambio(int id){
+        boolean flag = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            flag = !(session.createQuery("from Intercambio where id ="+id).list().isEmpty());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return flag;
+    }
+    
 }
