@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 import model.Intercambio;
 import org.hibernate.HibernateException;
@@ -14,19 +15,7 @@ public class IntercambioController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(intercambio);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException e) {
-        }
-        
-    }
-    
-    public void updateIntercambio(Intercambio intercambio){
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(intercambio);
+            session.saveOrUpdate(intercambio);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -59,5 +48,31 @@ public class IntercambioController {
         } catch (HibernateException e) {
         }
         return result;
+    }
+    
+    public void deleteIntercambio(Intercambio intercambio){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(intercambio);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
+    
+    public void deleteAllIntercambio(){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            List intercambios = getAllIntercambio();
+            for (Iterator it = intercambios.iterator(); it.hasNext();) {
+                Intercambio intercambio =(Intercambio)it.next();
+                session.delete(intercambio);
+                session.getTransaction().commit();
+            }
+            session.close();
+        } catch (HibernateException e) {
+        }
     }
 }

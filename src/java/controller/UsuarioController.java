@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 import model.Usuario;
 import org.hibernate.HibernateException;
@@ -14,19 +15,7 @@ public class UsuarioController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(usuario);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException e) {
-        }
-        
-    }
-    
-    public void updateUsuario(Usuario usuario){
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(usuario);
+            session.saveOrUpdate(usuario);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -61,4 +50,29 @@ public class UsuarioController {
         return result;
     }
     
+    public void deleteUsuario(Usuario usuario){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(usuario);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
+    
+    public void deleteAllUsuario(){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            List usuarios = getAllUsuario();
+            for (Iterator it = usuarios.iterator(); it.hasNext();) {
+                Usuario usuario =(Usuario)it.next();
+                session.delete(usuario);
+                session.getTransaction().commit();
+            }
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }   
 }

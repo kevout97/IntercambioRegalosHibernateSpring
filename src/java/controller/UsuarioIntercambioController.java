@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 import model.UsuarioIntercambio;
 import org.hibernate.HibernateException;
@@ -14,19 +15,7 @@ public class UsuarioIntercambioController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(usuarioIntercambio);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException e) {
-        }
-        
-    }
-    
-    public void updateUsuarioIntercambio(UsuarioIntercambio usuarioIntercambio){
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(usuarioIntercambio);
+            session.saveOrUpdate(usuarioIntercambio);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -61,4 +50,29 @@ public class UsuarioIntercambioController {
         return result;
     }
     
+    public void deleteUsuarioItercambio(UsuarioIntercambio usuarioIntercambio){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(usuarioIntercambio);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
+    
+    public void deleteAllUsuarioIntercambio(){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            List usuariosIntercambios = getAllUsuarioIntercambio();
+            for (Iterator it = usuariosIntercambios.iterator(); it.hasNext();) {
+                UsuarioIntercambio usuarioIntercambio =(UsuarioIntercambio)it.next();
+                session.delete(usuarioIntercambio);
+                session.getTransaction().commit();
+            }
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
 }

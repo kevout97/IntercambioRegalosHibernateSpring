@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 import model.AmigosId;
 import org.hibernate.HibernateException;
@@ -14,19 +15,7 @@ public class AmigosIdController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(amigos);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException e) {
-        }
-        
-    }
-    
-    public void updateAmigosId(AmigosId amigos){
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.update(amigos);
+            session.saveOrUpdate(amigos);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -61,4 +50,29 @@ public class AmigosIdController {
         return result;
     }
     
+    public void deleteAmigosId(AmigosId amigos){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(amigos);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
+    
+    public void deleteAllAmigosId(){
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            List amigosId = getAllAmigosId();
+            for (Iterator it = amigosId.iterator(); it.hasNext();) {
+                AmigosId amigo =(AmigosId)it.next();
+                session.delete(amigo);
+                session.getTransaction().commit();
+            }
+            session.close();
+        } catch (HibernateException e) {
+        }
+    }
 }
