@@ -74,5 +74,18 @@ public class UsuarioController {
             session.close();
         } catch (HibernateException e) {
         }
-    }   
+    }
+    
+    public boolean existsUsuario(Usuario usuario){
+        boolean flag = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            flag = !(session.createQuery("from Usuario where correo ='"+usuario.getCorreo()+"'").list().isEmpty());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return flag;
+    }
 }
