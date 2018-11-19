@@ -34,6 +34,15 @@ public class Intercambio  implements java.io.Serializable {
        this.comentarios = comentarios;
        this.usuarioIntercambios = usuarioIntercambios;
     }
+    
+    public Intercambio(Tema tema, String nombre, BigDecimal montoMaximo, Date fechaLimite, Date fechaIntercambio, String comentarios) {
+       this.tema = tema;
+       this.nombre = nombre;
+       this.montoMaximo = montoMaximo;
+       this.fechaLimite = fechaLimite;
+       this.fechaIntercambio = fechaIntercambio;
+       this.comentarios = comentarios;
+    }
    
     public Integer getId() {
         return this.id;

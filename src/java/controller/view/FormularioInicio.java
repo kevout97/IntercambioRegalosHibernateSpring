@@ -12,24 +12,23 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author kevout
  */
-@RequestMapping("/index")
 public class FormularioInicio {
     
-    @RequestMapping("/inicioSesion")
-    public ModelAndView inicioSesion(@RequestParam("correo") String correo){//Este metodo valida que el usuario este registrado
+    @RequestMapping("inicioSesion")
+    public ModelAndView inicioSesion(@RequestParam("correo") String correo, @RequestParam("contrasenia")String contrasenia){//Este metodo valida que el usuario este registrado
         ModelAndView model = new ModelAndView();
-        Usuario usuario = (new UsuarioController().existsUsuario(correo))?(new UsuarioController().getUsuario(correo)):null;
-        model.setViewName((new UsuarioController().existsUsuario(correo))?"paginaInicio":"usuarioNotFound");
-        model.addObject(usuario);
+        Usuario usuario = (new UsuarioController().existsUsuario(correo,contrasenia))?(new UsuarioController().getUsuario(correo,contrasenia)):new Usuario();
+        model.setViewName((new UsuarioController().existsUsuario(correo,contrasenia))?"paginaInicio":"usuarioNotFound");
+        model.addObject("usuario",usuario);
         return model;
     }
     
-    @RequestMapping("/verIntercambio")
+    @RequestMapping("verIntercambio")
     public ModelAndView searchIntercambio(@RequestParam("idIntercambio") Integer idIntercambio){//Este metodo valida que el usuario exista
         ModelAndView model = new ModelAndView();
-        Intercambio intercambio = (new IntercambioController().existsIntercambio(idIntercambio))?(new IntercambioController()).getIntercambio(idIntercambio):null;
+        Intercambio intercambio = (new IntercambioController().existsIntercambio(idIntercambio))?(new IntercambioController()).getIntercambio(idIntercambio):new Intercambio();
         model.setViewName((new IntercambioController().existsIntercambio(idIntercambio))?"descripcionIntercambio":"intercambioNotFound");
-        model.addObject(intercambio);
+        model.addObject("intercambio",intercambio);
         return model;
     }
 }

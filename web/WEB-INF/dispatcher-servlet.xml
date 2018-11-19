@@ -10,7 +10,11 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-
+    <bean class="controller.view.FormularioInicio" id="formularioInicio"/>
+    <bean class="controller.view.ExtraViews" id="extraVistas"/>
+    <bean class="controller.view.ABCAmigos" id="abcAmigos"/>
+    <bean class="controller.view.ABCUsuarios" id="abcUsuarios"/>
+    <bean class="controller.view.ABCIntercambios" id="abcIntercambios"/>
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -20,6 +24,22 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
+                <prop key="paginaInicio.htm">extraVistas</prop>
+                <prop key="usuarioNotFound.htm">extraVistas</prop>
+                <prop key="listaIntercambios.htm">extraVistas</prop>
+                <prop key="registroUsuario.htm">extraVistas</prop>
+                <prop key="registroIntercambio.htm">extraVistas</prop>
+                <prop key="inicioSesion.htm">formularioInicio</prop>
+                <prop key="verIntercambio.htm">formularioInicio</prop>
+                <prop key="altaAmigos.htm">abcAmigos</prop>
+                <prop key="cambioAmigos.htm">abcAmigos</prop>
+                <prop key="bajaAmigos.htm">abcAmigos</prop>
+                <prop key="altaUsuario.htm">abcUsuarios</prop>
+                <prop key="bajaUsuario.htm">abcUsuarios</prop>
+                <prop key="cambioUsuario.htm">abcUsuarios</prop>
+                <prop key="altaIntercambio.htm">abcIntercambios</prop>
+                <prop key="bajaIntercambio.htm">abcIntercambios</prop>
+                <prop key="cambioIntercambio.htm">abcIntercambios</prop>
             </props>
         </property>
     </bean>

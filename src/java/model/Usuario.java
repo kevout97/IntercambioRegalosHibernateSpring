@@ -37,6 +37,14 @@ public class Usuario  implements java.io.Serializable {
        this.amigosesForCorreoUsuario = amigosesForCorreoUsuario;
        this.usuarioIntercambios = usuarioIntercambios;
     }
+    
+    public Usuario(String correo, String nombre, String alias, String contrasenia, Boolean registrado) {
+       this.correo = correo;
+       this.nombre = nombre;
+       this.alias = alias;
+       this.contrasenia = contrasenia;
+       this.registrado = registrado;
+    }
    
     public String getCorreo() {
         return this.correo;

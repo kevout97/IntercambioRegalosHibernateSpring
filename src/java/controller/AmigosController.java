@@ -51,6 +51,19 @@ public class AmigosController {
         return result;
     }
     
+    public List getAllAmigosByEmail(String correo){
+        List result = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            result = session.createQuery("from Amigos where correo_usuario='"+correo+"'").list();
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return result;
+    }
+    
     public void deleteAmigos(Amigos amigos){
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();

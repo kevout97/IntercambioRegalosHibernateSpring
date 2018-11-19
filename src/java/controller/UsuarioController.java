@@ -37,6 +37,19 @@ public class UsuarioController {
         
     }
     
+    public Usuario getUsuario(String correo, String contrasenia){
+        Usuario usuario = new Usuario();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            usuario = (Usuario) session.createQuery("from Usuario u where u.correo ='"+correo+"' and u.contrasenia = '"+contrasenia+"'").list().get(0);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return usuario;
+    }
+    
     public List getAllUsuario(){
         List result = null;
         try {
@@ -81,7 +94,7 @@ public class UsuarioController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            flag = !(session.createQuery("from Usuario where correo ='"+usuario.getCorreo()+"'").list().isEmpty());
+            flag = !(session.createQuery("from Usuario u where u.correo ='"+usuario.getCorreo()+"'").list().isEmpty());
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {
@@ -101,4 +114,18 @@ public class UsuarioController {
         }
         return flag;
     }
+    
+    public boolean existsUsuario(String correo, String contrasenia){
+        boolean flag = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            flag = !(session.createQuery("from Usuario u where u.correo ='"+correo+"' and u.contrasenia = '"+contrasenia+"'").list().isEmpty());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+        }
+        return flag;
+    }
+    
 }
