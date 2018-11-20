@@ -68,9 +68,7 @@ public class UsuarioIntercambioController {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            result = session.createQuery("select i.id, i.nombre, t.nombreTema, i.monto_maximo, i.fecha_limite, i.fecha_intercambio, i.comentarios, (select us.nombre from Usuario us where us.correo = ui.id_intercambiar) as intercambiar"
-                                       + "from Intercambio i, UsuarioIntercambio ui, Tema t where ui.id_intercambio = i.id"
-                                        +" and ui.id_usuario = '"+correo+"' and t.id = i.id_tema").list();
+            result = session.createQuery("from UsuarioIntercambio where id_usuario = '"+correo+"'").list();
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException e) {

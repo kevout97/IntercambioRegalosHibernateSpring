@@ -5,7 +5,10 @@
  */
 package controller.view;
 
+import controller.IntercambioController;
 import controller.TemaController;
+import controller.UsuarioController;
+import controller.UsuarioIntercambioController;
 import model.Intercambio;
 import model.Tema;
 import model.Usuario;
@@ -25,8 +28,9 @@ public class ExtraViews {
     }
     
     @RequestMapping("listaAmigos")
-    public ModelAndView listaAmigos(){
-        return new ModelAndView("listaAmigos");
+    public ModelAndView listaAmigos(@RequestParam("correo")String correo){
+        ModelAndView mav = new ModelAndView("listaAmigos");
+        return mav;
     }
     
     @RequestMapping("registroUsuario")
@@ -42,6 +46,26 @@ public class ExtraViews {
         mav.addObject("intercambio", intercambio);
         mav.addObject("temas", new TemaController().getAllTema());
         mav.addObject("usuario", new Usuario(correo));
+        return mav;
+    }
+    
+    @RequestMapping("editarIntercambio")
+    public ModelAndView editarIntercambio(@RequestParam("idIntercambio")Integer idIntercambio,@RequestParam("correo")String correo){
+        ModelAndView mav = new ModelAndView("editarIntercambio");
+        mav.addObject("intercambio", new IntercambioController().getIntercambio(idIntercambio));
+        mav.addObject("usuario", new Usuario(correo));
+        mav.addObject("temas", new TemaController().getAllTema());
+        return mav;
+    }
+    
+    @RequestMapping("listaIntercambios")
+    public ModelAndView listaIntercambio(@RequestParam("correo")String correo){
+        ModelAndView mav = new ModelAndView("listaIntercambios");
+        mav.addObject("correo",correo);
+        mav.addObject("usuarios",new UsuarioController().getAllUsuario());
+        mav.addObject("usuarioIntercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        mav.addObject("temas", new TemaController().getAllTema());
+        mav.addObject("intercambios",new IntercambioController().getAllIntercambio());
         return mav;
     }
     

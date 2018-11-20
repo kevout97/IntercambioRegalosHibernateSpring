@@ -23,17 +23,30 @@
                 <th>Monto Maximo del Intercambio</th>
                 <th>Fecha Limite del Intercambio</th>
                 <th>Fecha del Intercambio</th>
-                <th>Comentarios</th>
                 <th>Persona que me toco</th>
+                <th>Comentarios</th>
             </tr>
-            <c:forEach var="inter" items="${intercambios}">
-                <td><input type="label" value="${inter.id}"/></td>
-                <td><input type="label" value="${inter.nombre}"/></td>
-                <td><input type="label" value="${inter.nombreTema}"/></td>
-                <td><input type="label" value="${inter.montoMaximo}"/></td>
-                <td><input type="label" value="${inter.fecha_limite}"/></td>
-                <td><input type="label" value="${inter.fecha_intercambio}"/></td>
-                <td><input type="label" value="${inter.intercambiar}"/></td>
+            <c:forEach var="userInter" items="${usuarioIntercambios}">
+                <tr>
+                    <td>${userInter.intercambio.id}</td>
+                    <td>${userInter.intercambio.nombre}</td>
+                    <td>${userInter.intercambio.tema.nombreTema}</td>
+                    <td>${userInter.intercambio.montoMaximo}</td>
+                    <td>${userInter.intercambio.fechaLimite}</td>
+                    <td>${userInter.intercambio.fechaIntercambio}</td>
+                    <td>
+                        <c:forEach var="usuario" items="${usuarios}">
+                            <c:if test="${usuario.correo == userInter.idIntercambiar}">
+                                ${usuario.nombre}
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>${userInter.intercambio.comentarios}</td>
+                    <c:if test="${userInter.creadorIntercambio}">
+                        <td><button><a href="editarIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Editar</a></button>
+                        <td><button><a href="bajaIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Eliminar</a></button>
+                    </c:if>
+                </tr>
             </c:forEach>
         </table>
     </body>

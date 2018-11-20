@@ -3,16 +3,12 @@ package controller.view;
 import controller.AdministracionIntercambios;
 import controller.IntercambioController;
 import controller.TemaController;
+import controller.UsuarioController;
 import controller.UsuarioIntercambioController;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import model.Intercambio;
-import model.Tema;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,7 +31,11 @@ public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Camb
         Intercambio intercambio = new Intercambio(new TemaController().getTemaByNombre(tema),nombre,montoMaximo,sdf.parse(fechaLimite),sdf.parse(fechaIntercambio),comentarios);
         setIntercambio(intercambio);
         new AdministracionIntercambios().iniciarIntercambio(intercambio.getId(), correo);
-        model.addObject("intercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        model.addObject("correo",correo);
+        model.addObject("usuarios",new UsuarioController().getAllUsuario());
+        model.addObject("usuarioIntercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        model.addObject("temas", new TemaController().getAllTema());
+        model.addObject("intercambios",new IntercambioController().getAllIntercambio());
         return model;
     }
     
@@ -43,7 +43,11 @@ public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Camb
     public ModelAndView bajaIntercambio(@RequestParam("idIntercambio")int idIntercambio,@RequestParam("correo") String correo){
         ModelAndView model = new ModelAndView("listaIntercambios");
         deleteIntercambio(new IntercambioController().getIntercambio(idIntercambio));
-        model.addObject("intercambios",new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        model.addObject("correo",correo);
+        model.addObject("usuarios",new UsuarioController().getAllUsuario());
+        model.addObject("usuarioIntercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        model.addObject("temas", new TemaController().getAllTema());
+        model.addObject("intercambios",new IntercambioController().getAllIntercambio());
         return model;
     }
     
@@ -54,11 +58,18 @@ public class ABCIntercambios extends IntercambioController{//Altas, Bajas y Camb
                                         @RequestParam("montoMaximo") BigDecimal montoMaximo,
                                         @RequestParam("fechaLimite") String fechaLimite,
                                         @RequestParam("fechaIntercambio") String fechaIntercambio,
-                                        @RequestParam("comentarios") String comentarios) throws ParseException{
+                                        @RequestParam("comentarios") String comentarios,
+                                        @RequestParam("idIntercambio")Integer idIntercambio) throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         ModelAndView model = new ModelAndView("listaIntercambios");
-        setIntercambio(new Intercambio(new TemaController().getTemaByNombre(tema),nombre,montoMaximo,sdf.parse(fechaLimite),sdf.parse(fechaIntercambio),comentarios));
-        model.addObject("intercambios",new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        Intercambio intercambio = new Intercambio(new TemaController().getTemaByNombre(tema),nombre,montoMaximo,sdf.parse(fechaLimite),sdf.parse(fechaIntercambio),comentarios);
+        intercambio.setId(idIntercambio);
+        setIntercambio(intercambio);
+        model.addObject("correo",correo);
+        model.addObject("usuarios",new UsuarioController().getAllUsuario());
+        model.addObject("usuarioIntercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        model.addObject("temas", new TemaController().getAllTema());
+        model.addObject("intercambios",new IntercambioController().getAllIntercambio());
         return model;
     }
 }

@@ -47,6 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <mapping resource="model/Tema.hbm.xml"/>
     <mapping resource="model/UsuarioIntercambio.hbm.xml"/>
     <mapping resource="model/Intercambio.hbm.xml"/>

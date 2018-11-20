@@ -15,10 +15,9 @@
     </head>
     <body>
         <h1>Pagina de Inicio</h1>
-        <a href="index.htm">Regresar</a>
-        <mvc:form modelAttribute="usuario" action="registroIntercambio.htm" method="POST">
-            <input type="hidden" name="correo" value="${usuario.getCorreo()}"/>
-            <input type="submit" value="Crear Intercambio"/>
-        </mvc:form>
+        <button><a href="index.htm">Salir</a></button>
+        <button><a href="registroIntercambio.htm?correo=${usuario.correo}">Crear Intercambio</a></button>
+        <button><a href="listaIntercambios.htm?correo=${usuario.correo}">Ver Intercambios</a></button>
+        <button><a href="listaAmigos.htm?correo=${usuario.correo}">Ver Intercambios</a></button>
     </body>
 </html>

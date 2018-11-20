@@ -28,6 +28,7 @@
                 <prop key="usuarioNotFound.htm">extraVistas</prop>
                 <prop key="listaIntercambios.htm">extraVistas</prop>
                 <prop key="registroUsuario.htm">extraVistas</prop>
+                <prop key="editarIntercambio.htm">extraVistas</prop>
                 <prop key="registroIntercambio.htm">extraVistas</prop>
                 <prop key="inicioSesion.htm">formularioInicio</prop>
                 <prop key="verIntercambio.htm">formularioInicio</prop>
