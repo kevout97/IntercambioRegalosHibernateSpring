@@ -29,5 +29,7 @@
             <input type="hidden" name="correo" value="${usuario.getCorreo()}"/>
             <input type="submit" value="Crear Intercambio"/>
         </form>
+        <button><a href="paginaBienvenida.htm?correo=${usuario.correo}">Pagina de Inicio</a></button>
+        <button><a href="index.htm">Salir</a></button>
     </body>
 </html>

@@ -3,15 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/web/WEB-INF/Mysql/script.sql</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/model/Tema.java</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/model/Usuario.java</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/model/UsuarioIntercambio.java</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/controller/TemaController.java</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/controller/view/ABCIntercambios.java</file>
+            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/controller/view/ExtraViews.java</file>
+            <file>file:/home/kevout/GitHub/IntercambioRegalos/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/home/kevout/GitHub/IntercambioRegalos/web/WEB-INF/dispatcher-servlet.xml</file>
+            <file>file:/home/kevout/GitHub/IntercambioRegalos/web/WEB-INF/jsp/descripcionIntercambio.jsp</file>
             <file>file:/home/kevout/GitHub/IntercambioRegalos/web/WEB-INF/jsp/listaIntercambios.jsp</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/controller/UsuarioIntercambioController.java</file>
-            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/model/Intercambio.java</file>
+            <file>file:/home/kevout/GitHub/IntercambioRegalos/src/java/controller/AdministracionIntercambios.java</file>
         </group>
     </open-files>
 </project-private>

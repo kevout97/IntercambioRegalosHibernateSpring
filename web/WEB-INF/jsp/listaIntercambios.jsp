@@ -49,5 +49,12 @@
                 </tr>
             </c:forEach>
         </table>
+        <form action="descripcionIntercambio.htm" method="POST">
+            <input type="number" name="idIntercambio" placeholder="Id Intercambio"/>
+            <input type="hidden" name="correo" value="${correo}"/>
+            <input type="submit" value="Buscar Intercambio"/>
+        </form>
+        <button><a href="paginaBienvenida.htm?correo=${correo}">Pagina de Inicio</a></button>
+        <button><a href="index.htm">Salir</a></button>
     </body>
 </html>

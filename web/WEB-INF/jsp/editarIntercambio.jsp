@@ -37,5 +37,7 @@
             <input type="hidden" name="idIntercambio" value="${intercambio.id}"/>
             <input type="submit" value="Actualizar Intercambio"/>
         </form>
+        <button><a href="paginaBienvenida.htm?correo=${usuario.correo}">Pagina de Inicio</a></button>
+        <button><a href="index.htm">Salir</a></button>
     </body>
 </html>

@@ -15,9 +15,9 @@
     </head>
     <body>
         <h1>Pagina de Inicio</h1>
-        <button><a href="index.htm">Salir</a></button>
         <button><a href="registroIntercambio.htm?correo=${usuario.correo}">Crear Intercambio</a></button>
         <button><a href="listaIntercambios.htm?correo=${usuario.correo}">Ver Intercambios</a></button>
-        <button><a href="listaAmigos.htm?correo=${usuario.correo}">Ver Intercambios</a></button>
+        <button><a href="listaAmigos.htm?correo=${usuario.correo}">Ver Amigos</a></button>
+        <button><a href="index.htm">Salir</a></button>
     </body>
 </html>

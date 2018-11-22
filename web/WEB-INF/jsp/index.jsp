@@ -16,10 +16,6 @@
             <input type="password" name="contrasenia" placeholder="Password"/>
             <input type="submit" value="Ingresar"/>
         </form>
-        <form action="verIntercambio.htm" method="POST">
-            <input type="number" name="idIntercambio" placeholder="Id Intercambio"/>
-            <input type="submit" value="Ver Intercambio"/>
-        </form>
         <button><a href="registroUsuario.htm">Registro</a></button>
     </body>
 </html>

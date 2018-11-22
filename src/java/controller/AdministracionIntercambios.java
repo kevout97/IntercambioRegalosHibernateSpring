@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import model.UsuarioIntercambio;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -11,7 +14,9 @@ import model.UsuarioIntercambio;
  */
 public class AdministracionIntercambios extends UsuarioIntercambioController{//Esta clase se emparejar a los usuarios en cada intercambio
     
-    public void agregarUsuario(int idIntercambio,String correo){//Este metodo agrega un usuario a un intercambio y los revuelve nuevamente
+    @RequestMapping("agregarUsuario")
+    public ModelAndView agregarUsuario(@RequestParam("idIntercambio")Integer idIntercambio,@RequestParam("correo")String correo){//Este metodo agrega un usuario a un intercambio y los revuelve nuevamente
+        
         UsuarioIntercambio ui = new UsuarioIntercambio(new IntercambioController().getIntercambio(idIntercambio),
                                                         new UsuarioController().getUsuario(correo),
                                                         true,
@@ -19,28 +24,31 @@ public class AdministracionIntercambios extends UsuarioIntercambioController{//E
                                                         false);
         setUsuarioIntercambio(ui);
         List usuariosIntercambiosOld = getAllUsuarioIntercambioByIdIntercambio(idIntercambio);
-        List usuariosIntercambiosNew = new ArrayList();
-        int random = (int)(Math.random() * (usuariosIntercambiosOld.size()-1));
-        int i = 0;
-        do{
-            if(random == usuariosIntercambiosOld.size()){
-                UsuarioIntercambio uit = (UsuarioIntercambio) usuariosIntercambiosOld.get(random);
-                uit.setIdIntercambiar(((UsuarioIntercambio) usuariosIntercambiosOld.get(i)).getUsuario().getCorreo());
-                usuariosIntercambiosNew.add(uit);
+        List usuariosIntercambiosNew = getAllUsuarioIntercambioByIdIntercambio(idIntercambio);
+        int random = (int)(Math.random() * (usuariosIntercambiosOld.size()-1))+1;
+        for (int k = 0; k < usuariosIntercambiosOld.size() ; k++) {
+            System.out.println("Usuario Old -->"+((UsuarioIntercambio)usuariosIntercambiosOld.get(k)).getUsuario().getCorreo());
+            System.out.println("Intercambiar Old --> "+((UsuarioIntercambio)usuariosIntercambiosOld.get(k)).getIdIntercambiar());
+        }
+        for (int i = 0; i < usuariosIntercambiosOld.size(); i++) {
+            if (random >= usuariosIntercambiosOld.size()) {
                 random = 0;
-            }else{
-                UsuarioIntercambio uit = (UsuarioIntercambio) usuariosIntercambiosOld.get(random);
-                uit.setIdIntercambiar(((UsuarioIntercambio) usuariosIntercambiosOld.get(i)).getUsuario().getCorreo());
-                usuariosIntercambiosNew.add(uit);
-                random ++;
             }
-            i++;
-        }while(i<usuariosIntercambiosOld.size());
+            ((UsuarioIntercambio)usuariosIntercambiosNew.get(i)).setIdIntercambiar(((UsuarioIntercambio)usuariosIntercambiosOld.get(random)).getUsuario().getCorreo());
+            random ++;
+        }
         
         for (Iterator it = usuariosIntercambiosNew.iterator(); it.hasNext();) {
             setUsuarioIntercambio((UsuarioIntercambio)it.next());
             
         }
+        ModelAndView mav = new ModelAndView("listaIntercambios");
+        mav.addObject("correo",correo);
+        mav.addObject("usuarios",new UsuarioController().getAllUsuario());
+        mav.addObject("usuarioIntercambios", new UsuarioIntercambioController().getAllMisIntercambios(correo));
+        mav.addObject("temas", new TemaController().getAllTema());
+        mav.addObject("intercambios",new IntercambioController().getAllIntercambio());
+        return mav;
         
     }
     

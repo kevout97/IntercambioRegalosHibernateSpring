@@ -15,6 +15,7 @@
     <bean class="controller.view.ABCAmigos" id="abcAmigos"/>
     <bean class="controller.view.ABCUsuarios" id="abcUsuarios"/>
     <bean class="controller.view.ABCIntercambios" id="abcIntercambios"/>
+    <bean class="controller.AdministracionIntercambios" id="administracionIntercambios"/>
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -30,6 +31,10 @@
                 <prop key="registroUsuario.htm">extraVistas</prop>
                 <prop key="editarIntercambio.htm">extraVistas</prop>
                 <prop key="registroIntercambio.htm">extraVistas</prop>
+                <prop key="descripcionIntercambio.htm">extraVistas</prop>
+                <prop key="paginaBienvenida.htm">extraVistas</prop>
+                <prop key="agregarUsuario.htm">administracionIntercambios</prop>
+                <prop key="listaAmigos.htm">extraVistas</prop>
                 <prop key="inicioSesion.htm">formularioInicio</prop>
                 <prop key="verIntercambio.htm">formularioInicio</prop>
                 <prop key="altaAmigos.htm">abcAmigos</prop>

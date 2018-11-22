@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Intercambio Not Found</h1>
-        <a href="index.htm">Regresar</a>
+        <a href="index.htm">Salir</a>
     </body>
 </html>

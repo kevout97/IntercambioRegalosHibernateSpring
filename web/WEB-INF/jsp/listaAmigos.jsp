@@ -18,14 +18,21 @@
         <table>
             <tr>
                 <th>Nombre del Amigo</th>
-                <th>Alias del Amigo</th>
                 <th>Correo</th>
             </tr>
-            <c:forEach var="userInter" items="${usuarioIntercambios}">
+            <c:forEach var="amigo" items="${amigos}">
                 <tr>
-                    
+                    <td>${amigo.usuarioByCorreoAmigo.nombre}</td>
+                    <td>${amigo.usuarioByCorreoAmigo.correo}</td>
                 </tr>
             </c:forEach>
         </table>
+        <form action="altaAmigos.htm" method="POST">
+            <input type="email" name="correoAmigo" placeholder="email"/>
+            <input type="hidden" name="correo" value="${correo}"/>
+            <input type="submit" value="Añadir amigo"/>
+        </form>
+        <button><a href="paginaBienvenida.htm?correo=${correo}">Pagina de Inicio</a></button>
+        <button><a href="index.htm">Salir</a></button>
     </body>
 </html>
