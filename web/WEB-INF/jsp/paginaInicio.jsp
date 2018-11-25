@@ -12,12 +12,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pagina de Inicio</title>
+        <link href="Css/css_menu.css" rel="stylesheet" />
     </head>
+ 
     <body>
-        <h1>Pagina de Inicio</h1>
-        <button><a href="registroIntercambio.htm?correo=${usuario.correo}">Crear Intercambio</a></button>
-        <button><a href="listaIntercambios.htm?correo=${usuario.correo}">Ver Intercambios</a></button>
-        <button><a href="listaAmigos.htm?correo=${usuario.correo}">Ver Amigos</a></button>
-        <button><a href="index.htm">Salir</a></button>
+        <div style="background-image: url(Images/Home.png)" class="fondo"> 
+            <ul>
+                <li><a href="registroIntercambio.htm?correo=${usuario.correo}">Crear Intercambio</a></li>
+                <li><a href="listaIntercambios.htm?correo=${usuario.correo}">Ver Intercambios</a></li>
+                <li><a href="listaAmigos.htm?correo=${usuario.correo}">Ver Amigos</a></li>
+                <li><a href="index.htm">Salir</a></li>
+            </ul>
+        </div>
     </body>
 </html>

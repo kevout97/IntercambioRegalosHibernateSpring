@@ -1,0 +1,266 @@
+body {
+    background: #2d343d;
+  }
+  
+  .login {
+    margin: 20px auto;
+    width: 330px;
+    padding: 30px 25px;
+    background: white;
+    border: 1px solid #c4c4c4;
+  }
+  
+  h1.login-title {
+    margin: -28px -25px 25px;
+    padding: 15px 25px;
+    line-height: 30px;
+    font-size: 25px;
+    font-weight: 300;
+    color: #ADADAD;
+    text-align:center;
+    background: #f7f7f7;
+   
+  }
+  
+  .login-input {
+    width: 285px;
+    height: 50px;
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .login-input:focus {
+      border-color:#6e8095;
+      outline: none;
+    }
+  .login-button {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #f0776c;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+  
+  .button-tabla-elim {
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    background: #f0776c;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+  
+  .button-tabla{
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    background: #5bc0de;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+
+  .login-button-registro{
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #5bc0de;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+
+  .login-button-salir {
+    width: 500px;
+    height: 90px;
+    padding: 0;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    background: #5bc0de;
+    border: 0px;
+    margin-top: 500px;
+    margin-left: 50px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+  
+  .login-button-salir-small {
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #03c5ab;
+    border: 0px;
+    margin-top: 10px;
+    margin-left: 85%;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+  
+  .login-lost
+  {
+    text-align:center;
+    margin-bottom:0px;
+  }
+  
+  .login-lost a
+  {
+    color:#666;
+    text-decoration:none;
+    font-size:13px;
+  }
+ 
+  .fondo{
+        height: 950px;
+        width: 100%;
+   }
+   
+   .person{
+       height: 125px;
+       width: 125px;
+       margin-left: 80px;
+   }
+   
+   #comentarios{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   #fecha_limite{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   #fecha_intercambio{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   ul li {
+background:#009696;
+list-style: none;
+height: 60px;
+float:left;
+width: 450px;
+padding:10px 5px;
+}
+ul li a {
+width: 440px;
+height: 40px;
+line-height: 53px;
+border-bottom: 4px solid #636393;
+padding:0px;
+color: #fff;
+font-size:18px;
+font-weight:lighter;
+text-align:center;
+text-decoration: none;
+display: block;
+-webkit-transition: .2s all linear;
+-moz-transition: .2s all linear;
+-o-transition: .2s all linear;
+transition: .2s all linear;
+}
+li:nth-child(1) a {
+border-color: #00EE33;
+}
+li:nth-child(2) a {
+border-color: #2222BD;
+}
+li:nth-child(3) a {
+border-color: #D4953C;
+}
+li:nth-child(4) a {
+border-color: #B5222D;
+}
+li:nth-child(5) a {
+border-color: #11BB11;
+}
+li:nth-child(1) a:hover {
+border-bottom: 35px solid #00EE33;
+height: 9px;
+}
+li:nth-child(2) a:hover {
+border-bottom: 35px solid #2222BD;
+height: 9px;
+}
+li:nth-child(3) a:hover {
+border-bottom: 35px solid #D4953C;
+height: 9px;
+}
+li:nth-child(4) a:hover {
+border-bottom: 35px solid #B5222D;
+height: 9px;
+}
+li:nth-child(5) a:hover {
+    border-bottom: 35px solid #11BB11;
+height: 9px;
+}
+
+
+table.GeneratedTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #0080c0;
+  border-style: solid;
+  color: #000000;
+}
+
+table.GeneratedTable td, table.GeneratedTable th {
+  border-width: 2px;
+  border-color: #0080c0;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.GeneratedTable thead {
+  background-color: #0080c0;
+  border-color: #ffffff;
+  color: #ffffff
+}

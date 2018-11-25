@@ -12,49 +12,66 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista Intercambios</title>
+        <link href="Css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="Css/css_inicio.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Lista Intercambios</h1>
-        <table>
-            <tr>
-                <th>Id del Intercambio</th>
-                <th>Nombre del Intercambio</th>
-                <th>Tema del Intercambio</th>
-                <th>Monto Maximo del Intercambio</th>
-                <th>Fecha Limite del Intercambio</th>
-                <th>Fecha del Intercambio</th>
-                <th>Persona que me toco</th>
-                <th>Comentarios</th>
-            </tr>
-            <c:forEach var="userInter" items="${usuarioIntercambios}">
-                <tr>
-                    <td>${userInter.intercambio.id}</td>
-                    <td>${userInter.intercambio.nombre}</td>
-                    <td>${userInter.intercambio.tema.nombreTema}</td>
-                    <td>${userInter.intercambio.montoMaximo}</td>
-                    <td>${userInter.intercambio.fechaLimite}</td>
-                    <td>${userInter.intercambio.fechaIntercambio}</td>
-                    <td>
-                        <c:forEach var="usuario" items="${usuarios}">
-                            <c:if test="${usuario.correo == userInter.idIntercambiar}">
-                                ${usuario.nombre}
-                            </c:if>
-                        </c:forEach>
-                    </td>
-                    <td>${userInter.intercambio.comentarios}</td>
-                    <c:if test="${userInter.creadorIntercambio}">
-                        <td><button><a href="editarIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Editar</a></button>
-                        <td><button><a href="bajaIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Eliminar</a></button>
-                    </c:if>
-                </tr>
-            </c:forEach>
-        </table>
-        <form action="descripcionIntercambio.htm" method="POST">
-            <input type="number" name="idIntercambio" placeholder="Id Intercambio"/>
-            <input type="hidden" name="correo" value="${correo}"/>
-            <input type="submit" value="Buscar Intercambio"/>
-        </form>
-        <button><a href="paginaBienvenida.htm?correo=${correo}">Pagina de Inicio</a></button>
-        <button><a href="index.htm">Salir</a></button>
+        <div class="fondo" style="background-image: url(Images/Crear.png)">
+            <ul>
+                <li><a href="paginaBienvenida.htm?correo=${correo}">Inicio</a></li>
+                <li><a href="registroIntercambio.htm?correo=${correo}">Crear Intercambio</a></li>
+                <li><a href="listaAmigos.htm?correo=${correo}">Ver Amigos</a></li>
+                <li><a href="index.htm">Salir</a></li>
+            </ul>
+                <br><br><br><br><br>
+            <table class="GeneratedTable">
+                <thead>
+                    <tr>
+                        <th>Id del Intercambio</th>
+                        <th>Nombre del Intercambio</th>
+                        <th>Tema del Intercambio</th>
+                        <th>Monto Maximo del Intercambio</th>
+                        <th>Fecha Limite del Intercambio</th>
+                        <th>Fecha del Intercambio</th>
+                        <th>Persona que me toco</th>
+                        <th>Comentarios</th>
+                        <th>opciones</th>
+                    </tr>
+                </thead>
+                <c:forEach var="userInter" items="${usuarioIntercambios}">
+                    <tr>
+                        <td>${userInter.intercambio.id}</td>
+                        <td>${userInter.intercambio.nombre}</td>
+                        <td>${userInter.intercambio.tema.nombreTema}</td>
+                        <td>${userInter.intercambio.montoMaximo}</td>
+                        <td>${userInter.intercambio.fechaLimite}</td>
+                        <td>${userInter.intercambio.fechaIntercambio}</td>
+                        <td>
+                            <c:forEach var="usuario" items="${usuarios}">
+                                <c:if test="${usuario.correo == userInter.idIntercambiar}">
+                                    ${usuario.nombre}
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>${userInter.intercambio.comentarios}</td>
+                        <c:if test="${userInter.creadorIntercambio}">
+                            <td>
+                                <button class="button-tabla"><a href="editarIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Editar</a></button>
+                                <button class="button-tabla-elim"><a href="bajaIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Eliminar</a></button>
+                            </td>
+                        </c:if>
+                    </tr>
+                </c:forEach>
+            </table>
+            <br><br>
+            <form action="descripcionIntercambio.htm" method="POST" class="login form-group">
+                <h1 class="login-title">Buscar Intercambio</h1>
+                <input type="number" name="idIntercambio" placeholder="Id Intercambio" class="login-input"/>
+                <input type="hidden" name="correo" value="${correo}"/>
+                <input type="submit" value="Buscar" class="login-button-registro"/>
+            </form>
+        </div>
     </body>
 </html>
+
+
