@@ -42,6 +42,10 @@
                 <input name="fechaIntercambio" type="date" placeholder="Fecha del Intercambio" id="fecha_intercambio"/>
                 <label>Comentarios:</label>
                 <textarea name="comentarios" placeholder="Escribe tus comentarios" rows="4" cols="50" id="comentarios"></textarea>
+                <label>Invitar Amigos</label><br/>
+                <c:forEach var="amigo" items="${amigos}">
+                        <input type="checkbox" name="amigos" value="${amigo.id.correoAmigo}">${amigo.id.correoAmigo}<br/>
+                </c:forEach>
                 <input type="hidden" name="correo" value="${usuario.getCorreo()}"/>
                 <input type="submit" value="Crear Intercambio" class="login-button-registro"/>
             </form>

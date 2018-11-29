@@ -54,10 +54,41 @@
                             </c:forEach>
                         </td>
                         <td>${userInter.intercambio.comentarios}</td>
-                        <c:if test="${userInter.creadorIntercambio}">
+                        <c:if test="${userInter.creadorIntercambio == true }">
+                            <td>
+                                <c:if test="${userInter.sortear == true}" >
+                                <c:forEach var="usuaInterAll" items="${usuarioIntercambiosAll}">
+                                   
+                                    <c:if test="${userInter.intercambio.id == usuaInterAll.intercambio.id}">
+                                        A:
+                                        <c:forEach var="usuario" items="${usuarios}">
+                                            <c:if test="${usuario.correo == usuaInterAll.usuario.correo}">
+                                                ${usuario.nombre} (${usuario.correo})
+                                            </c:if>
+                                        </c:forEach>
+                                         le toco:
+                                        <c:forEach var="usuario" items="${usuarios}">
+                                            <c:if test="${usuario.correo == usuaInterAll.idIntercambiar}">
+                                                ${usuario.nombre} (${usuario.correo})
+                                            </c:if>
+                                        </c:forEach>
+                                                 <br/>
+                                    </c:if>
+                                </c:forEach>
+                                </c:if>
+                            </td>
                             <td>
                                 <button class="button-tabla"><a href="editarIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Editar</a></button>
                                 <button class="button-tabla-elim"><a href="bajaIntercambio.htm?idIntercambio=${userInter.intercambio.id}&correo=${userInter.usuario.correo}">Eliminar</a></button>
+                                
+                                <c:if test="${userInter.sortear == false}" >
+                                    <form action="realizarSorteo.htm" method="POST">
+                                        <input type="hidden" name="idIntercambio" value="${userInter.intercambio.id}"/>
+                                        <input type="hidden" name="correo" value="${userInter.usuario.correo}"/>
+                                        <input type="submit" value="Sortear" class="button-tabla"/>
+                                    </form>
+                                    
+                                </c:if>
                             </td>
                         </c:if>
                     </tr>

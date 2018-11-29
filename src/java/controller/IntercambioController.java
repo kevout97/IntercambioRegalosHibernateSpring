@@ -11,13 +11,17 @@ import org.hibernate.Session;
  * @author kevout
  */
 public class IntercambioController {
+    private Session session;
+    public IntercambioController(){
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
     public void setIntercambio(Intercambio intercambio){
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             session.saveOrUpdate(intercambio);
             session.getTransaction().commit();
-            session.close();
+
         } catch (HibernateException e) {
         }
         
@@ -26,11 +30,11 @@ public class IntercambioController {
     public Intercambio getIntercambio(int idIntercambio){
         Intercambio intercambio = new Intercambio();
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             intercambio = (Intercambio) session.get(Intercambio.class, idIntercambio);
             session.getTransaction().commit();
-            session.close();
+
         } catch (HibernateException e) {
         }
         return intercambio;
@@ -40,11 +44,11 @@ public class IntercambioController {
     public List getAllIntercambio(){
         List result = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             result = session.createQuery("from Intercambio").list();
             session.getTransaction().commit();
-            session.close();
+
         } catch (HibernateException e) {
         }
         return result;
@@ -52,18 +56,18 @@ public class IntercambioController {
     
     public void deleteIntercambio(Intercambio intercambio){
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             session.delete(intercambio);
             session.getTransaction().commit();
-            session.close();
+
         } catch (HibernateException e) {
         }
     }
     
     public void deleteAllIntercambio(){
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             List intercambios = getAllIntercambio();
             for (Iterator it = intercambios.iterator(); it.hasNext();) {
@@ -71,7 +75,7 @@ public class IntercambioController {
                 session.delete(intercambio);
                 session.getTransaction().commit();
             }
-            session.close();
+            //
         } catch (HibernateException e) {
         }
     }
@@ -79,11 +83,11 @@ public class IntercambioController {
     public boolean existsIntercambio(Intercambio intercambio){
         boolean flag = false;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             flag = !(session.createQuery("from Intercambio where id ="+intercambio.getId()).list().isEmpty());
             session.getTransaction().commit();
-            session.close();
+            
         } catch (HibernateException e) {
         }
         return flag;
@@ -92,14 +96,21 @@ public class IntercambioController {
     public boolean existsIntercambio(int id){
         boolean flag = false;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            
             session.beginTransaction();
             flag = !(session.createQuery("from Intercambio where id ="+id).list().isEmpty());
             session.getTransaction().commit();
-            session.close();
+            
         } catch (HibernateException e) {
         }
         return flag;
+    }
+    
+    public void closeSession(){
+        try {
+            
+        } catch (HibernateException e) {
+        }
     }
     
 }

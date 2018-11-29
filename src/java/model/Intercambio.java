@@ -1,5 +1,5 @@
 package model;
-// Generated 18/11/2018 08:20:16 AM by Hibernate Tools 4.3.1
+// Generated 28/11/2018 09:02:11 AM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -42,6 +42,7 @@ public class Intercambio  implements java.io.Serializable {
        this.fechaLimite = fechaLimite;
        this.fechaIntercambio = fechaIntercambio;
        this.comentarios = comentarios;
+       this.usuarioIntercambios = usuarioIntercambios;
     }
    
     public Integer getId() {

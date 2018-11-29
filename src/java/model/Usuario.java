@@ -1,5 +1,5 @@
 package model;
-// Generated 18/11/2018 08:20:16 AM by Hibernate Tools 4.3.1
+// Generated 28/11/2018 09:02:11 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -36,14 +36,6 @@ public class Usuario  implements java.io.Serializable {
        this.amigosesForCorreoAmigo = amigosesForCorreoAmigo;
        this.amigosesForCorreoUsuario = amigosesForCorreoUsuario;
        this.usuarioIntercambios = usuarioIntercambios;
-    }
-    
-    public Usuario(String correo, String nombre, String alias, String contrasenia, Boolean registrado) {
-       this.correo = correo;
-       this.nombre = nombre;
-       this.alias = alias;
-       this.contrasenia = contrasenia;
-       this.registrado = registrado;
     }
    
     public String getCorreo() {

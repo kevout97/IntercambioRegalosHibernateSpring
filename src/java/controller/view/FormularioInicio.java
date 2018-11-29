@@ -16,19 +16,23 @@ public class FormularioInicio {
     
     @RequestMapping("inicioSesion")
     public ModelAndView inicioSesion(@RequestParam("correo") String correo, @RequestParam("contrasenia")String contrasenia){//Este metodo valida que el usuario este registrado
+        UsuarioController uc = new UsuarioController();
         ModelAndView model = new ModelAndView();
-        Usuario usuario = (new UsuarioController().existsUsuario(correo,contrasenia))?(new UsuarioController().getUsuario(correo,contrasenia)):new Usuario();
-        model.setViewName((new UsuarioController().existsUsuario(correo,contrasenia))?"paginaInicio":"usuarioNotFound");
+        Usuario usuario = (uc.existsUsuario(correo,contrasenia))?(uc.getUsuario(correo,contrasenia)):new Usuario();
+        model.setViewName((uc.existsUsuario(correo,contrasenia))?"paginaInicio":"usuarioNotFound");
         model.addObject("usuario",usuario);
+        uc.closeSession();
         return model;
     }
     
     @RequestMapping("verIntercambio")
     public ModelAndView searchIntercambio(@RequestParam("idIntercambio") Integer idIntercambio){//Este metodo valida que el usuario exista
+        IntercambioController ic = new IntercambioController();
         ModelAndView model = new ModelAndView();
-        Intercambio intercambio = (new IntercambioController().existsIntercambio(idIntercambio))?(new IntercambioController()).getIntercambio(idIntercambio):new Intercambio();
-        model.setViewName((new IntercambioController().existsIntercambio(idIntercambio))?"descripcionIntercambio":"intercambioNotFound");
+        Intercambio intercambio = (ic.existsIntercambio(idIntercambio))?ic.getIntercambio(idIntercambio):new Intercambio();
+        model.setViewName((ic.existsIntercambio(idIntercambio))?"descripcionIntercambio":"intercambioNotFound");
         model.addObject("intercambio",intercambio);
+        ic.closeSession();
         return model;
     }
 }

@@ -41,9 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="convivio"/>
-  <table-filter match-name="usuario"/>
-  <table-filter match-name="amigos"/>
   <table-filter match-name="intercambio"/>
+  <table-filter match-name="amigos"/>
   <table-filter match-name="tema"/>
+  <table-filter match-name="usuario"/>
   <table-filter match-name="usuario_intercambio"/>
 </hibernate-reverse-engineering>

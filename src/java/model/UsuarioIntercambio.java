@@ -1,5 +1,5 @@
 package model;
-// Generated 18/11/2018 08:20:16 AM by Hibernate Tools 4.3.1
+// Generated 28/11/2018 09:02:11 AM by Hibernate Tools 4.3.1
 
 
 
@@ -15,16 +15,28 @@ public class UsuarioIntercambio  implements java.io.Serializable {
      private Boolean estadoAceptacion;
      private String idIntercambiar;
      private Boolean creadorIntercambio;
+     private Boolean sortear;
 
     public UsuarioIntercambio() {
     }
 
-    public UsuarioIntercambio(Intercambio intercambio, Usuario usuario, Boolean estadoAceptacion, String idIntercambiar, Boolean creadorIntercambio) {
+    public UsuarioIntercambio(Intercambio intercambio, Usuario usuario, Boolean estadoAceptacion, String idIntercambiar, Boolean creadorIntercambio, Boolean sortear) {
        this.intercambio = intercambio;
        this.usuario = usuario;
        this.estadoAceptacion = estadoAceptacion;
        this.idIntercambiar = idIntercambiar;
        this.creadorIntercambio = creadorIntercambio;
+       this.sortear = sortear;
+    }
+    
+    public UsuarioIntercambio(Integer idUsuarioIntercambio,Intercambio intercambio, Usuario usuario, Boolean estadoAceptacion, String idIntercambiar, Boolean creadorIntercambio, Boolean sortear) {
+       this.idUsuarioIntercambio = idUsuarioIntercambio;
+       this.intercambio = intercambio;
+       this.usuario = usuario;
+       this.estadoAceptacion = estadoAceptacion;
+       this.idIntercambiar = idIntercambiar;
+       this.creadorIntercambio = creadorIntercambio;
+       this.sortear = sortear;
     }
    
     public Integer getIdUsuarioIntercambio() {
@@ -68,6 +80,13 @@ public class UsuarioIntercambio  implements java.io.Serializable {
     
     public void setCreadorIntercambio(Boolean creadorIntercambio) {
         this.creadorIntercambio = creadorIntercambio;
+    }
+    public Boolean getSortear() {
+        return this.sortear;
+    }
+    
+    public void setSortear(Boolean sortear) {
+        this.sortear = sortear;
     }
 
 

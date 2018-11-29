@@ -34,6 +34,7 @@
                 <prop key="descripcionIntercambio.htm">extraVistas</prop>
                 <prop key="paginaBienvenida.htm">extraVistas</prop>
                 <prop key="agregarUsuario.htm">administracionIntercambios</prop>
+                <prop key="realizarSorteo.htm">administracionIntercambios</prop>
                 <prop key="listaAmigos.htm">extraVistas</prop>
                 <prop key="inicioSesion.htm">formularioInicio</prop>
                 <prop key="verIntercambio.htm">formularioInicio</prop>
